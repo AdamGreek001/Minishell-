@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:24 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/15 12:09:06 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/24 23:36:43 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ int	exec_work(t_exec *head, int *fd)
 	return (1);
 }
 
-int	wait_child(int in)
+int	wait_child(int in, int pid)
 {
 	int	status;
 
-	while (wait(&status) != -1)
-	{
-		if (WIFEXITED(status))
-			exit_status(WEXITSTATUS(status), 1);
-		else
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		exit_status(WEXITSTATUS(status), 1);
+	else
 			exit_status(WTERMSIG(status) | 128, 1);
-	}
+	while (wait(NULL) != -1)
+		;
 	signal(SIGINT, sig_hand);
 	signal(SIGQUIT, SIG_IGN);
 	return (dup2(in, 0), close(in), 1);
@@ -103,5 +103,5 @@ int	exec(t_list *msh, int p_count)
 		if (pid > 0)
 			parent_work(&head, fd);
 	}
-	return (wait_child(in), 1);
+	return (wait_child(in, pid), 1);
 }

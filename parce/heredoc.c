@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:42:39 by akharfat          #+#    #+#             */
-/*   Updated: 2024/12/15 11:46:23 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/24 22:58:02 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 int	get_hrdc_file(t_list *node)
 {
 	char	*file;
-	char	*tmp;
 	int		fd;
 
-	tmp = malloc(1);
-	if (!tmp)
-		return (-1);
-	file = ft_itoa((int)tmp);
+	file = ft_itoa((long)node);
 	(file) && (file = ft_strjoin("/tmp/.tmp", file));
 	if (!file)
-		return (free(tmp), -1);
+		return (-1);
 	fd = open(file, O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
-		return (free(tmp), fd);
+		return (fd);
 	node->hrdc_fd = open(file, O_RDONLY);
 	if (node->hrdc_fd == -1)
-		return (free(tmp), close(fd), node->hrdc_fd);
+		return (close(fd), node->hrdc_fd);
 	unlink(file);
-	return (free(tmp), fd);
+	return (fd);
 }
 
 void	hrdc_sig(int sig)

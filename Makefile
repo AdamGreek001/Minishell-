@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akharfat <akharfat@student.42.fr>          +#+  +:+       +#+         #
+#    By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 11:43:22 by akharfat          #+#    #+#              #
-#    Updated: 2024/12/08 12:35:09 by akharfat         ###   ########.fr        #
+#    Updated: 2024/12/24 23:17:56 by eel-alao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC		=	builtins/builtins.c builtins/cd.c builtins/echo.c builtins/env.c builtins
 NAME	=	minishell
 CC		=	cc
 HEADER	=	minishell.h struct.h
-CFLAGS	=	-Wall -Wextra -Werror 
+CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 OBJS	=	$(SRC:.c=.o)
 
 READLINE_L = ~/.brew/opt/readline/lib
@@ -29,7 +29,7 @@ READLINE_I = ~/.brew/opt/readline/include
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L $(READLINE_L) -lreadline
+	$(CC) $(OBJS) $(CFLAGS) -o $(NAME) -L $(READLINE_L) -lreadline
 
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c -I $(READLINE_I) $< -o $@
