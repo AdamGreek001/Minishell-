@@ -1,0 +1,4 @@
+export a=aaa
+export a
+
+cd $PWD hi

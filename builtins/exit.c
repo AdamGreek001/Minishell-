@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 01:45:38 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/08 01:57:53 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:00:47 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	err_msg(char *n, int msg)
 		ft_putstr_fd("exit: ", 2);
 		ft_putstr_fd(n, 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
-		exit(255);
+		exit(2);
 	}
 	else if (msg == 2)
 	{

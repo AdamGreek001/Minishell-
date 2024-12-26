@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:31 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/24 23:36:59 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/25 20:18:24 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	open_file(int type, char *file)
 	if (type == R_IN)
 		return (open(file, O_RDONLY));
 	else if (type == APND)
-		return (open(file, O_CREAT | O_WRONLY | O_APPEND), 0644);
+		return (open(file, O_CREAT | O_WRONLY | O_APPEND, 0644));
 	else
-		return (open(file, O_CREAT | O_WRONLY | O_TRUNC), 0644);
+		return (open(file, O_CREAT | O_RDWR | O_TRUNC, 0644));
 }
 
 int	set_fd(t_exec *s, int reder_type, char *file)

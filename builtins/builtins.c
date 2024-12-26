@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:10 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/15 12:08:24 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/25 19:44:38 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	export_all(char **opts)
 		env.value = get_value(opts[i], j, &call);
 		if (!env.value && call == 1337)
 			return (0);
-		if (!check_key(env.key))
+		if (!check_key(env.key) || opts[i][0] == '='
+				|| !env.key[0])
 			(1) && (exprt_err(opts[i], &call), env.tmp++);
 		if (call != 42)
 			_env_(NULL, env.key, env.value, call);
