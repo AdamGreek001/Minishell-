@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:10 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/25 19:44:38 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:16:48 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	export_all(char **opts)
 		if (call != 42)
 			_env_(NULL, env.key, env.value, call);
 	}
-	if (!env.tmp)
-		exit_status(0, 1);
+	(!env.tmp) && (exit_status(0, 1));
 	return (1);
 }
 

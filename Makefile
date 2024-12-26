@@ -6,7 +6,7 @@
 #    By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/08 11:43:22 by akharfat          #+#    #+#              #
-#    Updated: 2024/12/25 19:09:02 by eel-alao         ###   ########.fr        #
+#    Updated: 2024/12/26 02:11:44 by eel-alao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC		=	builtins/builtins.c builtins/cd.c builtins/echo.c builtins/env.c builtins
 NAME	=	minishell
 CC		=	cc
 HEADER	=	minishell.h struct.h
-CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address
 OBJS	=	$(SRC:.c=.o)
 
 READLINE_L = ~/.brew/opt/readline/lib

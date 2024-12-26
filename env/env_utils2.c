@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 06:50:10 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/25 19:56:01 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:16:27 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ t_env	*add_env(t_env **head, char *key, char *value, t_call call)
 		return (tmp->value = ft_strjoin(tmp->value, value), tmp->hidden = false,
 			tmp);
 	if (tmp && call == NEW)
-		return (tmp->value = ft_strdup(value), tmp->hidden = false, tmp);
+		return ((value) && (tmp->value = ft_strdup(value)), \
+					tmp->hidden = false, tmp);
 	if (tmp && call == CHANGE)
-		return (tmp->value = value, tmp->hidden = false, tmp);
+		return ((value) && (tmp->value = value), tmp->hidden = false, tmp);
 	new = new_env_node(key, value);
 	if (!new)
 		return (NULL);
-	if (!*head)
-		*head = new;
-	else
+	if (*head)
 	{
 		tmp = *head;
 		while (tmp && tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+	(!*head) && (*head = new);
 	return (*head);
 }
 

@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:24 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/25 20:07:56 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:16:59 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	wait_child(int in, int pid)
 	if (WIFEXITED(status))
 		exit_status(WEXITSTATUS(status), 1);
 	else
-			exit_status(WTERMSIG(status) | 128, 1);
+		exit_status(WTERMSIG(status) | 128, 1);
 	while (wait(NULL) != -1)
 		;
 	signal(SIGINT, sig_hand);

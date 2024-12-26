@@ -6,7 +6,7 @@
 /*   By: eel-alao <eel-alao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 02:05:28 by eel-alao          #+#    #+#             */
-/*   Updated: 2024/12/25 20:19:43 by eel-alao         ###   ########.fr       */
+/*   Updated: 2024/12/26 02:13:52 by eel-alao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	exit_status(int _sts, int set)
 {
 	static int	sts;
 
-	if (set && _sts != 2)
+	if (set)
 		sts = _sts;
 	return (sts);
 }
